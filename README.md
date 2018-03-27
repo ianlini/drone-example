@@ -23,6 +23,8 @@ git clone https://github.com/ianlini/drone-example.git
 cd drone-example
 ```
 
+- You may want to fork this repository and clone your own repository so that you can push your commit.
+
 ## Setup Drone server
 
 Add `.env` to `drone-server/` with the following content:
@@ -61,7 +63,6 @@ Now you can access your Drone web server from http://123.123.123.123:8000, and l
   - This is a dangerous setting, make sure you know what this is if you are not just testing.
   - If your repository is public, you can also disable **pull request** in **Repository Hooks** so that no one can trigger your webhook using pull request.
 
-
 ## Trigger the webhook
 
 - Now you can try to trigger the webhook by pushing.
@@ -94,7 +95,7 @@ drone deploy {your repository} {build number} {environment}
 
 - Example:
 
-```
+```bash
 drone deploy ianlini/drone-example 3 production
 ```
 
