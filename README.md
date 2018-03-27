@@ -60,3 +60,12 @@ Now you can access your Drone web server from http://123.123.123.123:8000, and l
   - If your repository is `ianlini/drone-example`, then the setting page may be something like http://123.123.123.123:8000/ianlini/drone-example/settings.
   - This is a dangerous setting, make sure you know what this is if you are not just testing.
   - If your repository is public, you can also disable **pull request** in **Repository Hooks** so that no one can trigger your webhook using pull request.
+
+
+## Trigger the webhook
+
+- Now you can try to trigger the webhook by pushing.
+
+- After pushing, you will see the build here: http://123.123.123.123:8000/ianlini/drone-example/.
+
+- You can also see that the image is built on your machine, and the flake8 (python linter) is run using that image.
