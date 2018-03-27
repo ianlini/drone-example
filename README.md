@@ -115,3 +115,17 @@ drone deploy ianlini/drone-example 3 production
 - Run `docker ps` and you will see that your container `droneexample_drone-example_1` is running.
 
 - Run `docker logs droneexample_drone-example_1 -f` and you will see that it print your `example_secret` periodically.
+
+## Run locally
+
+- Trigger `build-docker` and `flake8`:
+
+```bash
+drone exec --build-event push --commit-sha latest
+```
+
+- Trigger `deploy-local`:
+
+```bash
+EXAMPLE_SECRET='this is a local secret' drone exec --build-event deployment --build-target local --commit-sha latest
+```
