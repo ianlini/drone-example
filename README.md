@@ -111,3 +111,7 @@ drone deploy ianlini/drone-example 3 production
   - Secret Value: `this is a secret`
 
 - Now try to deploy again.
+
+- Run `docker ps` and you will see that your container `droneexample_drone-example_1` is running.
+
+- Run `docker logs droneexample_drone-example_1 -f` and you will see that it print your `example_secret` periodically.
