@@ -36,7 +36,7 @@ DRONE_GITHUB_SECRET=...
 ```
 
 - `DRONE_ADMIN`: your Github username
-- `DRONE_HOST`: your host address (e.g., `http://123.123.123.123:8000`)
+- `DRONE_HOST`: your host address (e.g., http://123.123.123.123:8000)
 - `DRONE_SECRET`: generate a random string and put it here
 - `DRONE_GITHUB_CLIENT`: the **Client ID** you got in the previous step
 - `DRONE_GITHUB_SECRET`: the **Client Secret** you got in the previous step
@@ -49,3 +49,14 @@ docker-compose up -d
 ```
 
 Now you can access your Drone web server from http://123.123.123.123:8000, and login using Github's OAuth.
+
+## Configure for your repository
+
+- You should be able to understand the following steps on the GUI easily, but I still provide the URL in case you cannot find them.
+
+- Turn on your repository in the repositories page (e.g., http://123.123.123.123:8000/account/repos).
+
+- Set the repository to be trusted because we want to link the volume in `.drone.yml`.
+  - If your repository is `ianlini/drone-example`, then the setting page may be something like http://123.123.123.123:8000/ianlini/drone-example/settings.
+  - This is a dangerous setting, make sure you know what this is if you are not just testing.
+  - If your repository is public, you can also disable **pull request** in **Repository Hooks** so that no one can trigger your webhook using pull request.
