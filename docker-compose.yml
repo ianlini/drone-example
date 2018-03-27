@@ -3,5 +3,5 @@ version: '3'
 services:
   drone-example:
     image: drone-example:${DRONE_EXAMPLE_TAG}
-  environment:
-    EXAMPLE_SECRET: ${EXAMPLE_SECRET}
+    environment:
+      EXAMPLE_SECRET: ${EXAMPLE_SECRET}

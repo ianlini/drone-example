@@ -107,7 +107,7 @@ drone deploy ianlini/drone-example 3 production
 - We pass a secret to the python file `hello_world.py` to show the power of the secret management in Drone, so you should set it before deployment.
 
 - Go to http://123.123.123.123:8000/ianlini/drone-example/settings/secrets and set a secret:
-  - Secret Name: `EXAMPLE_SECRET`
+  - Secret Name: `example_secret`
   - Secret Value: `this is a secret`
 
 - Now try to deploy again.
