@@ -68,4 +68,46 @@ Now you can access your Drone web server from http://123.123.123.123:8000, and l
 
 - After pushing, you will see the build here: http://123.123.123.123:8000/ianlini/drone-example/.
 
-- You can also see that the image is built on your machine, and the flake8 (python linter) is run using that image.
+- You can also see that the image is built on your machine (`build-docker` step in the pipeline), and the flake8 (python linter) is run using that image (`flake8` step in the pipeline).
+
+- Note that only `build-docker` and `flake8` is run here because we set `when` for other steps in the pipeline so that they won't be triggered when pushing.
+
+## Deploy
+
+- The deployment can only be triggered using the command-line tool.
+
+- Install the tool following the instruction [here](http://docs.drone.io/cli-installation/).
+
+- Find your token here: http://123.123.123.123:8000/account/token. This page will tell you how to use the token:
+
+```bash
+export DRONE_SERVER=...
+export DRONE_TOKEN=...
+drone info
+```
+
+- Now you can deploy a previous build using the command:
+
+```bash
+drone deploy {your repository} {build number} {environment}
+```
+
+- Example:
+
+```
+drone deploy ianlini/drone-example 3 production
+```
+
+- This will trigger the `deploy-production` step in the pipeline.
+
+- This may be failed because you haven't set the secret `EXAMPLE_SECRET`.
+
+## Configure the secret
+
+- We pass a secret to the python file `hello_world.py` to show the power of the secret management in Drone, so you should set it before deployment.
+
+- Go to http://123.123.123.123:8000/ianlini/drone-example/settings/secrets and set a secret:
+  - Secret Name: `EXAMPLE_SECRET`
+  - Secret Value: `this is a secret`
+
+- Now try to deploy again.
