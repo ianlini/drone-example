@@ -1,0 +1,47 @@
+pipeline:
+  build-docker:
+    image: docker:17.12.1-ce
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - ./build_image.sh
+    when:
+      event: [push]
+
+  flake8:
+    image: drone-example:${DRONE_COMMIT_SHA}
+    commands:
+      - flake8
+    when:
+      event: [push, pull_request]
+
+  deploy-production:
+    image: docker/compose:1.19.0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      DRONE_EXAMPLE_TAG: ${DRONE_COMMIT_SHA}
+    commands:
+      - docker-compose -p drone-example down
+      - docker-compose -p drone-example up -d
+    secrets: [example_secret]
+    when:
+      event: deployment
+      environment: production
+
+  deploy-local:
+    image: docker/compose:1.19.0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      DRONE_EXAMPLE_TAG: ${DRONE_COMMIT_SHA}
+    commands:
+      - ./build_image.sh
+      - docker-compose -p drone-example down
+      - docker-compose -p drone-example up -d
+    secrets: [example_secret]
+    when:
+      event: deployment
+      environment: local
+
+branches: master
