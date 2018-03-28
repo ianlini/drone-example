@@ -16,6 +16,8 @@ Don't use this example directly if someone you don't trust can push or send pull
 
 - Click **Register application** and then you will get your **Client ID** and **Client Secret**. You will need them later.
 
+- Install the latest version of [Docker](https://docs.docker.com/install/) and [Docker Compose](https://docs.docker.com/compose/install/).
+
 ## Clone this repository
 
 ```bash
