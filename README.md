@@ -8,9 +8,9 @@ Don't use this example directly if someone you don't trust can push or send pull
 
 ## Preparation
 
-- We will use Github's OAuth to login and get the repository, so you should register a new OAuth application [here](https://github.com/settings/applications/new).
+- We will use GitHub's OAuth to login and get the repository, so you should register a new OAuth application [here](https://github.com/settings/applications/new).
 
-- **Authorization callback URL** should be the URL you will run your drone server with `/authorize` suffix. For example, if you want to run your server on `http://123.123.123.123:8000`, then you must put `http://123.123.123.123:8000/authorize` here. Note that this must be a public IP, or Github cannot trigger the webhook.
+- **Authorization callback URL** should be the URL you will run your drone server with `/authorize` suffix. For example, if you want to run your server on `http://123.123.123.123:8000`, then you must put `http://123.123.123.123:8000/authorize` here. Note that this must be a public IP, or GitHub cannot trigger the webhook.
 
 - You can fill in whatever you want in other fields.
 
@@ -39,7 +39,7 @@ DRONE_GITHUB_CLIENT=...
 DRONE_GITHUB_SECRET=...
 ```
 
-- `DRONE_ADMIN`: your Github username
+- `DRONE_ADMIN`: your GitHub username
 - `DRONE_HOST`: your host address (e.g., http://123.123.123.123:8000)
 - `DRONE_SECRET`: generate a random string and put it here
 - `DRONE_GITHUB_CLIENT`: the **Client ID** you got in the previous step
@@ -52,7 +52,7 @@ cd drone-server
 docker-compose up -d
 ```
 
-Now you can access your Drone web server from http://123.123.123.123:8000, and login using Github's OAuth.
+Now you can access your Drone web server from http://123.123.123.123:8000, and login using GitHub's OAuth.
 
 ## Configure for your repository
 
