@@ -103,11 +103,20 @@ drone deploy ianlini/drone-example 3 production
 
 - This will trigger the `deploy-production` step in the pipeline.
 
-- This may be failed because you haven't set the secret `EXAMPLE_SECRET`.
+- Run `docker ps` and you will see that your container `droneexample_drone-example_1` is running.
+
+- Run `docker logs droneexample_drone-example_1 -f` and you will see that it is printing the following things periodically:
+
+```text
+Hello world!!
+Your secret is ''.
+```
+
+- The secret is empty here because you haven't set your secret yet.
 
 ## Configure the secret
 
-- We pass a secret to the python file `hello_world.py` to show the power of the secret management in Drone, so you should set it before deployment.
+- We pass a secret to the python file `hello_world.py` to show the power of the secret management in Drone. You should set it before deployment.
 
 - Go to http://123.123.123.123:8000/ianlini/drone-example/settings/secrets and set a secret:
   - Secret Name: `example_secret`
@@ -115,9 +124,7 @@ drone deploy ianlini/drone-example 3 production
 
 - Now try to deploy again.
 
-- Run `docker ps` and you will see that your container `droneexample_drone-example_1` is running.
-
-- Run `docker logs droneexample_drone-example_1 -f` and you will see that it print your `example_secret` periodically.
+- Run `docker logs droneexample_drone-example_1 -f` and you will see that it is printing your `example_secret` periodically.
 
 ## Run locally
 
