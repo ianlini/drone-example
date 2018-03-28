@@ -2,7 +2,7 @@
 
 This is a Drone CI/CD example for single machine.
 I build up this example to show a simple CI/CD use case: build docker image, test, and then deploy the system.
-I assume that you have the drone server and agent on the same machine, and you also want to deploy your system that machine.
+I assume that you have the drone server and agent on the same machine, and you also want to deploy your system to that machine.
 This setup helps us build up an example easier because we don't need to handle many secrets.
 Don't use this example directly if someone you don't trust can push or send pull request to your repository.
 
